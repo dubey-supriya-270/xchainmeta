@@ -11,7 +11,7 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
     //Passing project id as params
     const {
-      userId,
+    
       productName,
       productPrice,
       productDescription,
@@ -21,7 +21,6 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
 
     // Verify product
     if (
-      !userId ||
       !productName ||
       !productPrice ||
       !productDescription ||
@@ -39,7 +38,7 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
 
     // If request body verified then add configuration
     const createProductResult: Result = await controller.createProduct({
-      userId,
+    
       productName,
       productPrice,
       productDescription,
@@ -70,7 +69,7 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
  * - @requires Id: Id of the product
  */
 router.get(
-  "/:id",
+  "/view-product/:id",
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       //Passing project id as params

@@ -9,7 +9,6 @@ export const addProduct = async (data: IProduct): Promise<Result> => {
   try {
     // creating new user details data in database.
     const result = await Products.create({
-      userId: data.userId,
       productName: data.productName,
       productPrice: data.productPrice,
       productDescription: data.productDescription,
@@ -47,7 +46,7 @@ export const retrieveProductById = async (
   id: string
 ): Promise<Result<IProduct>> => {
   try {
-    const result = await Products.findOne({ id: id }).exec();
+    const result = await Products.findOne({ _id: id }).exec();
     if (!result) {
       const err: CustomError = {
         statusCode: STATUS.NOT_FOUND,

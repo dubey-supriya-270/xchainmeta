@@ -5,11 +5,7 @@ import { IProduct } from "../../interfaces/product";
 //Defining user model
 let product = new mongoose.Schema<IProduct>(
   {
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
-      required: true,
-    },
+  
     productName: { type: String, required: true },
     productPrice: { type: Number, required: true },
     productDescription: { type: String, required: true },

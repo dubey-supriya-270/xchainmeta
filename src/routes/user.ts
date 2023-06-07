@@ -9,7 +9,7 @@ const router = express.Router();
 
 // Route for signup
 router.post(
-  "/register",
+  "/sign-up",
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       // destructuring data.
@@ -43,7 +43,7 @@ router.post(
       }
 
       const token = jwtToken.generateAccessToken(
-        result.data.userName,
+        result.data.userEmail,
         result.data._id
       );
 
@@ -62,7 +62,7 @@ router.post(
 );
 // Route for user login
 router.post(
-  "/login",
+  "/sign-in",
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { userEmail, password } = req.body;
@@ -101,7 +101,7 @@ router.post(
       }
       // return success response when userName & password is correct
       const token = jwtToken.generateAccessToken(
-        isUserExist.data.userName!,
+        isUserExist.data.userEmail!,
         isUserExist.data._id.toString()
       );
       res.status(STATUS.OK).json({
